@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Login | ClothZa</title>
+  <link rel="stylesheet" href="login.css" />
+</head>
+<body>
+  <div class="signup-container">
+    <form class="signup-form" onsubmit="return handleLogin(event)">
+      <h2>Login to Your Account</h2>
+      <input type="email" id="login-email" placeholder="Email Address" required />
+      <input type="password" id="login-password" placeholder="Password" required />
+      <button type="submit">Login</button>
+      <p class="login-link">Don't have an account? <a href="signup.html">Sign up here</a></p>
+    </form>
+  </div>
+
+  <script>
+    function handleLogin(event) {
+      event.preventDefault();
+
+      const email = document.getElementById("login-email").value.trim();
+      const password = document.getElementById("login-password").value;
+      const users = JSON.parse(localStorage.getItem("users") || "[]");
+
+      const foundUser = users.find(user => user.email === email && user.password === password);
+
+      if (foundUser) {
+        alert("Login successful!");
+        localStorage.setItem("loggedInUser", JSON.stringify(foundUser));
+        localStorage.setItem("isLoggedIn", "true"); // ✅ Flag to tell other pages user is logged in
+        window.location.href = "index.html"; // Redirect to home or billing page
+      } else {
+        alert("Invalid email or password.");
+        localStorage.setItem("isLoggedIn", "false"); // ✅ Optional, to reset flag on failure
+      }
+    }
+  </script>
+</body>
+</html>
