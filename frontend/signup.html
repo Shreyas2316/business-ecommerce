@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Signup | ClothZa</title>
+  <link rel="stylesheet" href="login.css"> 
+
+</head>
+<body>
+  <div class="signup-container">
+    <form class="signup-form" onsubmit="return handleSignup(event)">
+      <h2>Create an Account</h2>
+      <input type="email" id="email" placeholder="Email Address" required />
+      <input type="password" id="password" placeholder="Password" required />
+      <button type="submit">Sign Up</button>
+      <p class="login-link">Already have an account? <a href="login.html">Login here</a></p>
+    </form>
+  </div>
+
+  <script>
+    function handleSignup(event) {
+      event.preventDefault();3
+      
+      const email = document.getElementById("email").value.trim();
+      const password = document.getElementById("password").value;
+      
+      const users = JSON.parse(localStorage.getItem("users") || "[]");
+      
+      // Check if email already exists
+      if (users.some((user) => user.email === email)) {
+        alert("An account with this email already exists!");
+        return false;
+      }
+
+      // Store the new user
+      users.push({ email, password });
+      localStorage.setItem("users", JSON.stringify(users));
+
+      alert("Signup successful! You can now login.");
+      window.location.href = "login.html"; // Redirect to login page
+      return false;
+    }
+  </script>
+</body>
+</html>
