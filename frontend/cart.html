@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Shopping Cart | ClothZa</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+ 
+    <section id="header">
+        <a href="#"><img src="https://github.com/tech2etc/Build-and-Deploy-Ecommerce-Website/blob/main/img/logo.png?raw=true" class="logo" alt=""></a>
+        <div>
+            <ul id="navbar">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="shop.html">Shop</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="orders.html">Your Orders</a></li>
+                <li><a class="active" href="cart.html"><i class="fa-solid fa-bag-shopping"></i></a></li>
+            </ul>
+        </div>
+    </section>
+
+    <section id="page-header">
+        <h2>Your Shopping Cart</h2>
+    </section>
+
+    <div class="cart-container">
+        <h2>Your Shopping Cart</h2>
+        <div class="cart-items" id="cartItems">
+            <!-- Cart items will be dynamically inserted here -->
+        </div>
+        <div class="cart-summary">
+            <h3>Order Summary</h3>
+            <div class="summary-item">
+                <span>Subtotal:</span>
+                <span id="subtotal">$0.00</span>
+            </div>
+            <div class="summary-item">
+                <span>Tax:</span>
+                <span id="tax">$0.00</span>
+            </div>
+            <div class="summary-item total">
+                <span>Total:</span>
+                <span id="total">$0.00</span>
+            </div>
+            <button class="checkout-btn" onclick="window.location.href='billing.html'">Proceed to Checkout</button>
+
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 ClothZa. All Rights Reserved.</p>
+    </footer>
+
+    <script>
+        // Function to Load Cart from localStorage and Update the Cart View
+        function loadCart() {
+            const cart = JSON.parse(localStorage.getItem("cart")) || [];
+            const cartItemsContainer = document.getElementById('cartItems');
+            const subtotalElement = document.getElementById('subtotal');
+            const taxElement = document.getElementById('tax');
+            const totalElement = document.getElementById('total');
+
+            if (cart.length === 0) {
+                cartItemsContainer.innerHTML = "<p>Your cart is empty.</p>";
+                subtotalElement.innerText = "$0.00";
+                taxElement.innerText = "$0.00";
+                totalElement.innerText = "$0.00";
+            } else {
+                let subtotal = 0;
+                cartItemsContainer.innerHTML = cart.map((item, index) => {
+                    subtotal += item.price * item.quantity;
+                    return `
+                        <div class="cart-item">
+                            <img src="${item.image}" alt="${item.name}" width="50">
+                            <div class="cart-item-details">
+                                <span class="cart-item-name">${item.name}</span>
+                                <span class="cart-item-price">₹${item.price}</span>
+                                <span class="cart-item-quantity">x ${item.quantity}</span>
+                            </div>
+                            <button class="remove-btn" onclick="removeItem(${index})">Remove</button>
+                        </div>
+                    `;
+                }).join(''); // Map cart items to HTML and join them into one string
+
+                // Calculate Subtotal, Tax, and Total
+                const tax = subtotal * 0.00; // Assume 18% tax
+                const total = subtotal + tax;
+
+                subtotalElement.innerText = `₹${subtotal.toFixed(2)}`;
+                taxElement.innerText = `₹${tax.toFixed(2)}`;
+                totalElement.innerText = `₹${total.toFixed(2)}`;
+            }
+        }
+
+        // Function to Remove Item from Cart
+        function removeItem(index) {
+            let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+            // Remove item at the specific index
+            cart.splice(index, 1);
+
+            // Save the updated cart back to localStorage
+            localStorage.setItem("cart", JSON.stringify(cart));
+
+            // Reload the cart view
+            loadCart();
+        }
+
+        // Call loadCart function when the page loads
+        window.onload = loadCart;
+    </script>
+
+</body>
+</html>

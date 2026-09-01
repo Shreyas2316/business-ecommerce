@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Your Orders | ClothZa</title>
+  <link rel="stylesheet" href="style.css"/>
+  <style>
+    #orders-page {
+      padding: 40px 80px;
+      background-color: #f4f4f4;
+      font-family: Arial, sans-serif;
+    }
+
+    .orders-container {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      background-color: #fff;
+      padding: 30px;
+      border-radius: 8px;
+      margin-top: 30px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .order-items {
+      flex: 1 1 60%;
+    }
+
+    .order-summary {
+      flex: 1 1 35%;
+      padding-left: 30px;
+      border-left: 1px solid #e0e0e0;
+    }
+
+    .order-summary h3 {
+      font-size: 24px;
+      margin-bottom: 15px;
+    }
+
+    .order-summary p {
+      font-size: 18px;
+      margin: 10px 0;
+    }
+
+    .cart-item {
+      display: flex;
+      align-items: center;
+      margin-bottom: 15px;
+    }
+
+    .cart-item img {
+      margin-right: 15px;
+      width: 60px;
+      height: auto;
+      object-fit: contain;
+    }
+
+    .cart-item-details span {
+      display: block;
+    }
+
+    .cart-item-name {
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+
+  <section id="header">
+    <a href="#"><img src="https://github.com/tech2etc/Build-and-Deploy-Ecommerce-Website/blob/main/img/logo.png?raw=true" class="logo" alt=""></a>
+    <div>
+      <ul id="navbar">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="shop.html">Shop</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a class="active" href="orders.html">Your Orders</a></li>
+        <li><a href="cart.html"><i class="fa-solid fa-bag-shopping"></i></a></li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="orders-page">
+    <h2>Thank You! Your Order Has Been Placed</h2>
+    <p style="text-align:center; color: #555;">Below is the summary of your recent purchase.</p>
+
+    <div class="orders-container">
+      <div class="order-items" id="orderItems">
+        <!-- Ordered items will be injected here -->
+      </div>
+
+      <div class="order-summary">
+        <h3>Order Summary</h3>
+        <p id="order-subtotal">Subtotal: ₹0.00</p>
+        <p id="order-tax">Tax: ₹0.00</p>
+        <p id="order-total"><strong>Total: ₹0.00</strong></p>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <p style="text-align:center;">&copy; 2025 ClothZa. All Rights Reserved.</p>
+  </footer>
+
+  <script>
+    function loadOrderSummary() {
+      const orders = JSON.parse(localStorage.getItem("orderHistory")) || [];
+      const container = document.getElementById("orderItems");
+
+      if (orders.length === 0) {
+        container.innerHTML = "<p>No recent orders found.</p>";
+        return;
+      }
+
+      const lastOrder = orders[orders.length - 1];
+
+      container.innerHTML = lastOrder.items.map(item => `
+        <div class="cart-item">
+          <img src="${item.image}" alt="${item.name}">
+          <div class="cart-item-details">
+            <span class="cart-item-name">${item.name}</span>
+            <span class="cart-item-price">₹${item.price}</span>
+            <span class="cart-item-quantity">x ${item.quantity}</span>
+          </div>
+        </div>
+      `).join("");
+
+      document.getElementById("order-subtotal").innerText = `Subtotal: ₹${lastOrder.subtotal}`;
+      document.getElementById("order-tax").innerText = `Tax: ₹${lastOrder.tax}`;
+      document.getElementById("order-total").innerText = `Total: ₹${lastOrder.total}`;
+    }
+
+    window.onload = loadOrderSummary;
+  </script>
+
+</body>
+</html>
