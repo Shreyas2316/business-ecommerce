@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Online T-Shirts Shopping Site | ClothZa</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <section id="header">
+        <a href="index.html"><img src="logo.png" class="logo" alt="ClothZa Logo"></a>
+
+        <div>
+            <ul id="navbar">
+                <li><a class="active" href="index.html">Home</a></li>
+                <li><a href="shop.html">Shop</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="orders.html">Your Orders</a></li>
+                <li id="lg-bag">
+                    <a href="cart.html">
+                        <div class="cart-icon-container">
+                            <i class="fa-solid fa-bag-shopping"></i>
+                            <span class="cart-badge">0</span>
+                        </div>
+                    </a>
+                </li>
+                <a href="#" id="close"><i class="fas fa-times"></i></a>
+            </ul>
+        </div>
+
+        <div id="mobile">
+            <a href="cart.html">
+                <div class="cart-icon-container">
+                    <i class="fa-solid fa-bag-shopping"></i>
+                    <span class="cart-badge">0</span>
+                </div>
+            </a>
+            <i id="bar" class="fas fa-outdent"></i>
+        </div>
+    </section>
+
+    <section id="hero">
+        <h4>Trade-in-offer</h4>
+        <h2>Super value deals</h2>
+        <h1>On all products</h1>
+        <p>Save more with coupons & up to 70% off!</p>
+        <button onclick="window.location.href='shop.html';">Shop Now</button>
+    </section>
+
+    <section id="feature" class="section-p1">
+        <div class="fe-box">
+            <img src="f1.png" alt="Free Shipping">
+            <h6>Free Shipping</h6>
+        </div>
+        <div class="fe-box">
+            <img src="f2.png" alt="Online Order">
+            <h6>Online Order</h6>
+        </div>
+        <div class="fe-box">
+            <img src="f3.png" alt="Save Money">
+            <h6>Save Money</h6>
+        </div>
+        <div class="fe-box">
+            <img src="f4.png" alt="Promotions">
+            <h6>Promotions</h6>
+        </div>
+        <div class="fe-box">
+            <img src="f5.png" alt="Happy Sell">
+            <h6>Happy Sell</h6>
+        </div>
+        <div class="fe-box">
+            <img src="f6.png" alt="24/7 Support">
+            <h6>24/7 Support</h6>
+        </div>
+    </section>
+
+    <section id="product1" class="section-p1">
+        <h2>Featured Products</h2>
+        <p>Summer Collection New Modern Design</p>
+        <div class="pro-container">
+
+            <div class="pro">
+                <img src="s1.jpg" alt="Cartoon Astronaut T-Shirt" onclick="window.location.href='sproduct.html';">
+                <div class="des" onclick="window.location.href='sproduct.html';">
+                    <span>adidas</span>
+                    <h5>Cartoon Astronaut T-Shirts</h5>
+                    <div class="star">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <h4>₹599</h4>
+                </div>
+                <a href="javascript:void(0)" onclick="addToCart({name: 'Cartoon Astronaut T-Shirts', price: 599, image: 's1.jpg', size: 'L'})">
+                    <i class="fas fa-shopping-cart cart"></i>
+                </a>
+            </div>
+
+            <div class="pro">
+                <img src="s2.jpg" alt="Space Explorer Tee" onclick="window.location.href='sproduct.html';">
+                <div class="des" onclick="window.location.href='sproduct.html';">
+                    <span>adidas</span>
+                    <h5>Space Explorer Graphic Tee</h5>
+                    <div class="star">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <h4>₹699</h4>
+                </div>
+                <a href="javascript:void(0)" onclick="addToCart({name: 'Space Explorer Graphic Tee', price: 699, image: 's2.jpg', size: 'M'})">
+                    <i class="fas fa-shopping-cart cart"></i>
+                </a>
+            </div>
+
+            <div class="pro">
+                <img src="b16.jpg" alt="Urban Floral Shirt" onclick="window.location.href='sproduct.html';">
+                <div class="des" onclick="window.location.href='sproduct.html';">
+                    <span>Puma</span>
+                    <h5>Urban Vintage Printed Shirt</h5>
+                    <div class="star">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star-half-alt"></i>
+                    </div>
+                    <h4>₹799</h4>
+                </div>
+                <a href="javascript:void(0)" onclick="addToCart({name: 'Urban Vintage Printed Shirt', price: 799, image: 'b16.jpg', size: 'L'})">
+                    <i class="fas fa-shopping-cart cart"></i>
+                </a>
+            </div>
+
+            <div class="pro">
+                <img src="b18.jpg" alt="Retro Casual Shirt" onclick="window.location.href='sproduct.html';">
+                <div class="des" onclick="window.location.href='sproduct.html';">
+                    <span>Nike</span>
+                    <h5>Retro Casual Summer Shirt</h5>
+                    <div class="star">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <h4>₹899</h4>
+                </div>
+                <a href="javascript:void(0)" onclick="addToCart({name: 'Retro Casual Summer Shirt', price: 899, image: 'b18.jpg', size: 'M'})">
+                    <i class="fas fa-shopping-cart cart"></i>
+                </a>
+            </div>
+
+        </div>
+    </section>
+
+    <section id="banner" class="section-m1">
+        <h4>Repair Services</h4>
+        <h2>Up to <span>70% Off</span> - All t-Shirts & Accessories</h2>
+        <button class="normal" onclick="window.location.href='shop.html';">Explore More</button>
+    </section>
+
+    <section id="product1" class="section-p1">
+        <h2>New Arrivals</h2>
+        <p>Casual Wear New Modern Design</p>
+        <div class="pro-container">
+
+            <div class="pro">
+                <img src="b10.jpg" alt="Classic Denim Wear" onclick="window.location.href='sproduct.html';">
+                <div class="des" onclick="window.location.href='sproduct.html';">
+                    <span>Zara</span>
+                    <h5>Classic Denim Shirt</h5>
+                    <div class="star">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <h4>₹1,299</h4>
+                </div>
+                <a href="javascript:void(0)" onclick="addToCart({name: 'Classic Denim Shirt', price: 1299, image: 'b10.jpg', size: 'L'})">
+                    <i class="fas fa-shopping-cart cart"></i>
+                </a>
+            </div>
+
+            <div class="pro">
+                <img src="b17.jpg" alt="Summer Resort Shirt" onclick="window.location.href='sproduct.html';">
+                <div class="des" onclick="window.location.href='sproduct.html';">
+                    <span>H&M</span>
+                    <h5>Summer Resort Leaf Shirt</h5>
+                    <div class="star">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <h4>₹999</h4>
+                </div>
+                <a href="javascript:void(0)" onclick="addToCart({name: 'Summer Resort Leaf Shirt', price: 999, image: 'b17.jpg', size: 'M'})">
+                    <i class="fas fa-shopping-cart cart"></i>
+                </a>
+            </div>
+
+            <div class="pro">
+                <img src="b4.jpg" alt="Minimalist Linen Shirt" onclick="window.location.href='sproduct.html';">
+                <div class="des" onclick="window.location.href='sproduct.html';">
+                    <span>Uniqlo</span>
+                    <h5>Minimalist Linen Comfort Shirt</h5>
+                    <div class="star">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <h4>₹1,199</h4>
+                </div>
+                <a href="javascript:void(0)" onclick="addToCart({name: 'Minimalist Linen Comfort Shirt', price: 1199, image: 'b4.jpg', size: 'L'})">
+                    <i class="fas fa-shopping-cart cart"></i>
+                </a>
+            </div>
+
+            <div class="pro">
+                <img src="b7.jpg" alt="Active Sport Tee" onclick="window.location.href='sproduct.html';">
+                <div class="des" onclick="window.location.href='sproduct.html';">
+                    <span>Nike</span>
+                    <h5>Active Sport Perform Tee</h5>
+                    <div class="star">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <h4>₹799</h4>
+                </div>
+                <a href="javascript:void(0)" onclick="addToCart({name: 'Active Sport Perform Tee', price: 799, image: 'b7.jpg', size: 'M'})">
+                    <i class="fas fa-shopping-cart cart"></i>
+                </a>
+            </div>
+
+        </div>
+    </section>
+
+    <section id="sm-banner" class="section-p1">
+        <div class="banner-box">
+            <h4>Crazy Deals</h4>
+            <h2>Buy 1 Get 1 Free</h2>
+            <span>The best classic dress is on sale at ClothZa</span>
+            <button class="white" onclick="window.location.href='shop.html';">Learn More</button>
+        </div>
+        <div class="banner-box banner-box2">
+            <h4>Spring/Summer</h4>
+            <h2>Upcoming Season</h2>
+            <span>The best classic collection is on sale</span>
+            <button class="white" onclick="window.location.href='shop.html';">Collection</button>
+        </div>
+    </section>
+
+    <section id="banner3">
+        <div class="banner-box">
+            <h2>SEASONAL SALE</h2>
+            <h3>Winter collection -50% OFF</h3>
+        </div>
+        <div class="banner-box banner-box2">
+            <h2>NEW FOOTWEAR COLLECTION</h2>
+            <h3>Spring / Summer 2025</h3>
+        </div>
+        <div class="banner-box banner-box3">
+            <h2>T-SHIRTS</h2>
+            <h3>New Trendy Prints</h3>
+        </div>
+    </section>
+
+    <section id="newsletter" class="section-p1 section-m1">
+        <div class="newstext">
+            <h4>Sign Up For Newsletters</h4>
+            <p>Get E-mail updates about our latest shop and <span>special offers.</span></p>
+        </div>
+        <div class="form">
+            <input type="text" id="newsletter-email" placeholder="Your email address">
+            <button class="normal" onclick="if(document.getElementById('newsletter-email').value){showToast('Subscribed to newsletter!', 'success'); document.getElementById('newsletter-email').value='';}else{showToast('Please enter an email address', 'error');}">Sign Up</button>
+        </div>
+    </section>
+
+    <footer class="section-p1">
+        <div class="col">
+            <img class="logo" src="logo.png" alt="ClothZa Logo">
+            <h4>Contact</h4>
+            <p><strong>Address: </strong> KR Puram Extension, Bengaluru, Karnataka</p>
+            <p><strong>Phone: </strong> +91 7022608489</p>
+            <p><strong>Hours: </strong> 10:00 - 18:00, Mon - Sat</p>
+            <div class="follow">
+                <h4>Follow Us</h4>
+                <div class="icon">
+                    <i class="fab fa-facebook-f"></i>
+                    <i class="fab fa-twitter"></i>
+                    <i class="fab fa-instagram"></i>
+                    <i class="fab fa-pinterest-p"></i>
+                    <i class="fab fa-youtube"></i>
+                </div>
+            </div>
+        </div>
+
+        <div class="col">
+            <h4>About</h4>
+            <a href="about.html">About Us</a>
+            <a href="#">Delivery Information</a>
+            <a href="#">Privacy Policy</a>
+            <a href="#">Terms & Conditions</a>
+            <a href="#">Contact Us</a>
+        </div>
+
+        <div class="col">
+            <h4>My Account</h4>
+            <a href="login.html">Sign In</a>
+            <a href="cart.html">View Cart</a>
+            <a href="orders.html">My Wishlist</a>
+            <a href="orders.html">Track My Order</a>
+            <a href="#">Help</a>
+        </div>
+
+        <div class="col install">
+            <h4>Install App</h4>
+            <p>From App Store or Google Play</p>
+            <div class="row">
+                <img src="app.jpg" alt="App Store">
+                <img src="play.jpg" alt="Google Play">
+            </div>
+            <p>Secured Payment Gateways</p>
+            <img src="pay.png" alt="Payment Methods">
+        </div>
+
+        <div class="copyright">
+            <p>&copy; 2025 ClothZa - Premium E-Commerce</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

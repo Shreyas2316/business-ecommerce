@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Checkout & Billing | ClothZa</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+    <link rel="stylesheet" href="style.css" />
+    <style>
+        #billing-page {
+            padding: 40px 80px;
+            background-color: #f9fbf9;
+            min-height: 80vh;
+        }
+
+        #billing-page h2 {
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 32px;
+            color: var(--text-main);
+        }
+
+        .billing-container {
+            display: flex;
+            justify-content: space-between;
+            gap: 30px;
+            flex-wrap: wrap;
+            background-color: #fff;
+            padding: 35px;
+            border-radius: var(--radius-md);
+            box-shadow: var(--shadow-sm);
+            border: 1px solid #f0f0f0;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        #billingForm {
+            flex: 1 1 55%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        #billingForm label {
+            margin-top: 15px;
+            font-weight: 700;
+            font-size: 14px;
+            color: var(--text-main);
+        }
+
+        #billingForm input,
+        #billingForm select {
+            padding: 12px 15px;
+            margin-top: 6px;
+            border: 1px solid var(--card-border);
+            border-radius: 6px;
+            font-size: 15px;
+            outline: none;
+            transition: all 0.3s ease;
+        }
+
+        #billingForm input:focus,
+        #billingForm select:focus {
+            border-color: var(--primary);
+            box-shadow: 0 0 8px rgba(8, 129, 120, 0.2);
+        }
+
+        #billingForm button {
+            margin-top: 30px;
+            padding: 15px;
+            background-color: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-size: 16px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 12px rgba(8, 129, 120, 0.25);
+        }
+
+        #billingForm button:hover {
+            background-color: var(--primary-hover);
+            transform: translateY(-2px);
+        }
+
+        .billing-summary {
+            flex: 1 1 38%;
+            border-left: 1px dashed var(--card-border);
+            padding-left: 30px;
+        }
+
+        .billing-summary h3 {
+            margin-bottom: 20px;
+            font-size: 22px;
+            color: var(--text-main);
+            border-bottom: 2px solid var(--secondary);
+            padding-bottom: 10px;
+        }
+
+        .billing-item-preview {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 10px;
+            font-size: 14px;
+        }
+
+        .summary-row {
+            display: flex;
+            justify-content: space-between;
+            margin: 10px 0;
+            font-size: 15px;
+            color: var(--text-muted);
+        }
+
+        .summary-row.total {
+            font-size: 18px;
+            font-weight: 800;
+            color: var(--primary);
+            border-top: 1px dashed var(--card-border);
+            padding-top: 12px;
+            margin-top: 15px;
+        }
+
+        @media (max-width: 768px) {
+            #billing-page {
+                padding: 20px;
+            }
+            .billing-container {
+                flex-direction: column;
+                padding: 20px;
+            }
+            .billing-summary {
+                border-left: none;
+                border-top: 1px dashed var(--card-border);
+                padding-left: 0;
+                padding-top: 20px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <section id="header">
+        <a href="index.html"><img src="logo.png" class="logo" alt="ClothZa Logo"></a>
+        <div>
+            <ul id="navbar">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="shop.html">Shop</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="orders.html">Your Orders</a></li>
+                <li id="lg-bag">
+                    <a href="cart.html">
+                        <div class="cart-icon-container">
+                            <i class="fa-solid fa-bag-shopping"></i>
+                            <span class="cart-badge">0</span>
+                        </div>
+                    </a>
+                </li>
+                <a href="#" id="close"><i class="fas fa-times"></i></a>
+            </ul>
+        </div>
+        <div id="mobile">
+            <a href="cart.html">
+                <div class="cart-icon-container">
+                    <i class="fa-solid fa-bag-shopping"></i>
+                    <span class="cart-badge">0</span>
+                </div>
+            </a>
+            <i id="bar" class="fas fa-outdent"></i>
+        </div>
+    </section>
+
+    <section id="billing-page">
+        <h2>Shipping & Billing Information</h2>
+
+        <div class="billing-container">
+            <form id="billingForm">
+                <label>Full Name:</label>
+                <input type="text" id="fullname" placeholder="John Doe" required>
+
+                <label>Email Address:</label>
+                <input type="email" id="email" placeholder="john@example.com" required>
+
+                <label>Shipping Address:</label>
+                <input type="text" id="address" placeholder="123 Main St, Apt 4B" required>
+
+                <div style="display: flex; gap: 15px;">
+                    <div style="flex: 1;">
+                        <label>City:</label>
+                        <input type="text" id="city" placeholder="Bengaluru" required style="width: 100%;">
+                    </div>
+                    <div style="flex: 1;">
+                        <label>Postal Code:</label>
+                        <input type="text" id="postal" placeholder="560036" required style="width: 100%;">
+                    </div>
+                </div>
+
+                <label>Payment Method:</label>
+                <select id="payment" required>
+                    <option value="">Select Payment Method</option>
+                    <option value="card" selected>Credit / Debit Card / UPI</option>
+                    <option value="cod">Cash on Delivery (COD)</option>
+                </select>
+
+                <button type="submit" id="placeOrderBtn">Place Order Now <i class="fas fa-check-circle" style="margin-left: 8px;"></i></button>
+            </form>
+
+            <div class="billing-summary">
+                <h3>Order Items</h3>
+                <div id="billing-items-list" style="max-height: 200px; overflow-y: auto; margin-bottom: 15px;">
+                    <!-- Dynamically populated -->
+                </div>
+
+                <div class="summary-row">
+                    <span>Subtotal:</span>
+                    <span id="billing-subtotal">₹0.00</span>
+                </div>
+                <div class="summary-row">
+                    <span>GST Tax (18%):</span>
+                    <span id="billing-tax">₹0.00</span>
+                </div>
+                <div class="summary-row total">
+                    <span>Grand Total:</span>
+                    <span id="billing-total">₹0.00</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="section-p1">
+        <div class="copyright" style="width: 100%; text-align: center;">
+            <p>&copy; 2025 ClothZa. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const cart = getCart();
+            if (cart.length === 0) {
+                showToast("Your cart is empty!", "error");
+                setTimeout(() => {
+                    window.location.href = "shop.html";
+                }, 1200);
+                return;
+            }
+
+            // Autofill user info if logged in
+            const loggedUser = JSON.parse(localStorage.getItem("loggedInUser") || "{}");
+            if (loggedUser.email) {
+                document.getElementById("email").value = loggedUser.email;
+                if (loggedUser.name) document.getElementById("fullname").value = loggedUser.name;
+            }
+
+            // Calculate Order Totals
+            let subtotal = 0;
+            const itemsList = document.getElementById("billing-items-list");
+            itemsList.innerHTML = cart.map(item => {
+                const qty = parseInt(item.quantity) || 1;
+                const price = parseFloat(item.price) || 0;
+                subtotal += price * qty;
+                return `
+                    <div class="billing-item-preview">
+                        <span><strong>${item.name}</strong> x ${qty}</span>
+                        <span>₹${(price * qty).toFixed(2)}</span>
+                    </div>
+                `;
+            }).join("");
+
+            const tax = subtotal * 0.18;
+            const total = subtotal + tax;
+
+            document.getElementById("billing-subtotal").innerText = `₹${subtotal.toFixed(2)}`;
+            document.getElementById("billing-tax").innerText = `₹${tax.toFixed(2)}`;
+            document.getElementById("billing-total").innerText = `₹${total.toFixed(2)}`;
+
+            // Form Submit Handler
+            const billingForm = document.getElementById("billingForm");
+            billingForm.addEventListener("submit", (e) => {
+                e.preventDefault();
+
+                const order = {
+                    id: "ORD-" + Math.floor(100000 + Math.random() * 900000),
+                    items: cart,
+                    subtotal: subtotal.toFixed(2),
+                    tax: tax.toFixed(2),
+                    total: total.toFixed(2),
+                    customer: {
+                        name: document.getElementById("fullname").value,
+                        email: document.getElementById("email").value,
+                        address: document.getElementById("address").value,
+                        city: document.getElementById("city").value,
+                        postal: document.getElementById("postal").value,
+                        payment: document.getElementById("payment").value
+                    },
+                    status: "Confirmed",
+                    date: new Date().toLocaleDateString("en-US", { year: 'numeric', month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit' })
+                };
+
+                const history = JSON.parse(localStorage.getItem("orderHistory")) || [];
+                history.unshift(order);
+                localStorage.setItem("orderHistory", JSON.stringify(history));
+
+                // Clear cart
+                saveCart([]);
+
+                showToast("Order placed successfully!", "success");
+                setTimeout(() => {
+                    window.location.href = "orders.html";
+                }, 1000);
+            });
+        });
+    </script>
+</body>
+
+</html>

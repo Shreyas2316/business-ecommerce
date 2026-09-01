@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Signup | ClothZa</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+  <link rel="stylesheet" href="style.css"> 
+  <link rel="stylesheet" href="login.css"> 
+</head>
+<body>
+
+  <div class="brand-header">
+    <a href="index.html"><img src="logo.png" alt="ClothZa Logo"></a>
+  </div>
+
+  <div class="signup-container">
+    <form class="signup-form" onsubmit="return handleSignup(event)">
+      <h2>Create an Account</h2>
+      <p class="subtitle">Join ClothZa to enjoy exclusive discounts & track orders</p>
+      
+      <input type="email" id="email" placeholder="Email Address" required />
+      <input type="password" id="password" placeholder="Password (min 4 chars)" minlength="4" required />
+      
+      <button type="submit">Create Account <i class="fas fa-user-plus" style="margin-left: 6px;"></i></button>
+      
+      <p class="login-link">Already have an account? <a href="login.html">Login here</a></p>
+    </form>
+  </div>
+
+  <div class="back-home">
+    <a href="index.html"><i class="fas fa-arrow-left" style="margin-right: 5px;"></i> Back to Home</a>
+  </div>
+
+  <script src="script.js"></script>
+  <script>
+    function handleSignup(event) {
+      event.preventDefault();
+      
+      const email = document.getElementById("email").value.trim();
+      const password = document.getElementById("password").value;
+      
+      const users = JSON.parse(localStorage.getItem("users") || "[]");
+      
+      if (users.some((user) => user.email === email)) {
+        showToast("An account with this email already exists!", "error");
+        return false;
+      }
+
+      users.push({ email, password });
+      localStorage.setItem("users", JSON.stringify(users));
+
+      showToast("Signup successful! You can now log in.", "success");
+      setTimeout(() => {
+        window.location.href = "login.html";
+      }, 1000);
+      return false;
+    }
+  </script>
+</body>
+</html>

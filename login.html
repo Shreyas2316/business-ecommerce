@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Login | ClothZa</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="login.css" />
+</head>
+<body>
+
+  <div class="brand-header">
+    <a href="index.html"><img src="logo.png" alt="ClothZa Logo"></a>
+  </div>
+
+  <div class="signup-container">
+    <form class="signup-form" onsubmit="return handleLogin(event)">
+      <h2>Welcome Back</h2>
+      <p class="subtitle">Log in to manage your orders & shopping cart</p>
+      
+      <input type="email" id="login-email" placeholder="Email Address" required />
+      <input type="password" id="login-password" placeholder="Password" required />
+      
+      <button type="submit">Log In <i class="fas fa-sign-in-alt" style="margin-left: 6px;"></i></button>
+      
+      <p class="login-link">Don't have an account? <a href="signup.html">Sign up here</a></p>
+    </form>
+  </div>
+
+  <div class="back-home">
+    <a href="index.html"><i class="fas fa-arrow-left" style="margin-right: 5px;"></i> Back to Home</a>
+  </div>
+
+  <script src="script.js"></script>
+  <script>
+    function handleLogin(event) {
+      event.preventDefault();
+
+      const email = document.getElementById("login-email").value.trim();
+      const password = document.getElementById("login-password").value;
+      const users = JSON.parse(localStorage.getItem("users") || "[]");
+
+      const foundUser = users.find(user => user.email === email && user.password === password);
+
+      if (foundUser) {
+        showToast("Login successful!", "success");
+        localStorage.setItem("loggedInUser", JSON.stringify(foundUser));
+        localStorage.setItem("isLoggedIn", "true");
+        setTimeout(() => {
+          window.location.href = "index.html";
+        }, 800);
+      } else {
+        showToast("Invalid email or password.", "error");
+        localStorage.setItem("isLoggedIn", "false");
+      }
+    }
+  </script>
+</body>
+</html>
